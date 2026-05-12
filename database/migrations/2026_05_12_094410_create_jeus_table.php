@@ -13,19 +13,12 @@ return new class extends Migration
     {
         Schema::create('jeus', function (Blueprint $table) {
             $table->id();
-            // Champs d'origine du PDF
             $table->string('titre');
             $table->string('plateforme');
             $table->string('developpeur');
             $table->integer('annee_sortie');
-            $table->integer('score'); 
-
-            // AJOUTS pour le mode Pokémon
-            $table->string('type')->default('Normal'); // Feu, Eau, etc.
-            $table->integer('pv_actuel')->default(100);
-            $table->integer('pv_max')->default(100);
-            $table->integer('niveau')->default(1);
-            
+            $table->integer('score'); // 0 à 100
+            $table->string('image')->nullable(); // Stocke le chemin de l'image
             $table->timestamps();
         });
     }
