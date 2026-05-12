@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('jeus', function (Blueprint $table) {
             $table->id();
-            $table->string('titre');
-            $table->string('plateforme');
-            $table->string('developpeur');
-            $table->integer('annee_sortie');
-            $table->integer('score'); // On utilisera ce champ pour la barre de progression sur Android
+            $table->string('titre'); // Nom du Pokémon/Personnage
+            $table->string('type');  // Feu, Eau, Plante, etc.
+            $table->integer('pv_actuel')->default(100);
+            $table->integer('pv_max')->default(100);
+            $table->integer('niveau')->default(1);
+            $table->integer('score')->default(0); // Ton expérience ou score global
+            $table->string('developpeur')->nullable(); // On garde pour le projet 13
             $table->timestamps();
         });
     }

@@ -8,9 +8,10 @@ class Jeu extends Model
 {
     protected $fillable = [
         'titre', 
-        'plateforme', 
-        'developpeur', 
-        'annee_sortie', 
+        'type', 
+        'pv_actuel', 
+        'pv_max', 
+        'niveau', 
         'score'
     ];
 }

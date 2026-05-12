@@ -7,51 +7,53 @@ use Illuminate\Http\Request;
 
 class JeuController extends Controller
 {
-    // Afficher la liste des jeux (Étape 2 du flux Android plus tard)
+    // Récupérer tous les personnages/sauvegardes
     public function index()
     {
         return Jeu::all();
     }
 
-    // Créer un nouveau jeu (Validation demandée par le PDF)
+    // Créer un nouveau personnage (Nouvelle partie)
     public function store(Request $request)
     {
         $validated = $request->validate([
             'titre' => 'required|string',
-            'plateforme' => 'required|string',
-            'developpeur' => 'required|string',
-            'annee_sortie' => 'required|integer',
-            'score' => 'required|integer|min:0|max:100',
+            'type' => 'required|string',
+            'pv_actuel' => 'required|integer',
+            'pv_max' => 'required|integer',
+            'niveau' => 'required|integer',
+            'score' => 'required|integer',
         ]);
 
         return Jeu::create($validated);
     }
 
-    // Afficher un jeu spécifique
+    // Voir les détails d'un personnage précis
     public function show(Jeu $jeu)
     {
         return $jeu;
     }
 
-    // Mettre à jour un jeu
+    // Sauvegarder l'état après un combat (Mise à jour des PV et du Score)
     public function update(Request $request, Jeu $jeu)
     {
         $validated = $request->validate([
             'titre' => 'required|string',
-            'plateforme' => 'required|string',
-            'developpeur' => 'required|string',
-            'annee_sortie' => 'required|integer',
-            'score' => 'required|integer|min:0|max:100',
+            'type' => 'required|string',
+            'pv_actuel' => 'required|integer',
+            'pv_max' => 'required|integer',
+            'niveau' => 'required|integer',
+            'score' => 'required|integer',
         ]);
 
         $jeu->update($validated);
         return $jeu;
     }
 
-    // Supprimer un jeu
+    // Supprimer une sauvegarde
     public function destroy(Jeu $jeu)
     {
         $jeu->delete();
-        return response()->json(['message' => 'Jeu supprimé']);
+        return response()->json(['message' => 'Sauvegarde supprimée']);
     }
 }
