@@ -12,7 +12,7 @@ class JeuSeeder extends Seeder
         // On crée les jeux directement un par un pour éviter les erreurs de variables
         Jeu::create([
             'titre' => 'God of War',
-            'plateforme' => 'PlayStation 5',
+            'plateforme' => 'PS 5',
             'developpeur' => 'Santa Monica Studio',
             'annee_sortie' => 2022,
             'score' => 94,
@@ -48,7 +48,7 @@ class JeuSeeder extends Seeder
 
         Jeu::create([
             'titre' => 'Genshin Impact',
-            'plateforme' => 'Android / PC',
+            'plateforme' => 'Android/PC',
             'developpeur' => 'HoYoverse',
             'annee_sortie' => 2020,
             'score' => 82,
